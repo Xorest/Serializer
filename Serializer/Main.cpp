@@ -18,9 +18,12 @@ int main()
 
     Data y( 0, false, 0 );
     Deserializer deserializer(stream);
-    //err = deserializer.load(y);
+    err = deserializer.load(y);
+    assert(err == Error::NoError);
+
     assert(err == Error::NoError);
     assert(x.A() == y.A());
     assert(x.B() == y.B());
     assert(x.C() == y.C());
+    return 0;
 }

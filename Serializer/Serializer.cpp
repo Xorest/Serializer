@@ -6,14 +6,27 @@ Serializer::Serializer(std::stringstream& stream)
 {
 }
 
-Error Serializer::process(bool isBool)
+Error Serializer::process(bool value)
 {
 	try
 	{
-		_stream << (isBool ? "true" : "false") << separator;
+		_stream << (value ? "true" : "false") << separator;
 		return Error::NoError;
 	}
 	catch(...)
+	{
+		return Error::CorruptedArchive;
+	}
+}
+
+Error Serializer::process(uint64_t value)
+{
+	try
+	{
+		_stream << std::to_string(value) << separator;
+		return Error::NoError;
+	}
+	catch (...) 
 	{
 		return Error::CorruptedArchive;
 	}

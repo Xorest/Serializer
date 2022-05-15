@@ -1,7 +1,7 @@
 #pragma once
 #include "ISerializer.h"
 
-class Serializer : public virtual ISerializer
+class Serializer : public ISerializer
 {
 public:
 	explicit Serializer(std::stringstream& stream);
@@ -16,26 +16,20 @@ public:
 		return process(args...);
 	}
 private:
-	Error process(bool isBool);
+	static constexpr char separator = ' ';
+	Error process(bool value);
+	Error process(uint64_t value);
 	template <class T>
 	Error process(T&& value)
 	{
-		try
-		{
-			_stream << value << separator;
-			return Error::NoError;
-		}
-		catch (...)
-		{
-			return Error::CorruptedArchive;
-		}
+		return Error::CorruptedArchive;
 	}
 	template <class T, class... ArgsT>
 	Error process(T&& value, ArgsT&&... args) 
 	{
 		try
 		{
-			_stream << value << separator;
+			process(value);
 			process(std::forward<ArgsT>(args)...);
 			return Error::NoError;
 		}

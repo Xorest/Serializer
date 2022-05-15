@@ -15,6 +15,12 @@ public:
     {
         return serializer(_a, _b, _c);
     }
+    template <class Deserializer>
+    Error deserialize(Deserializer& deserializer)
+    {
+        return deserializer(_a, _b, _c);
+    }
+
 
 private:
     uint64_t _a;

@@ -1,3 +1,4 @@
+#include <String>
 #include "Deserializer.h"
 
 Deserializer::Deserializer(std::stringstream& stream)
@@ -5,8 +6,37 @@ Deserializer::Deserializer(std::stringstream& stream)
 {
 }
 
-template<class T>
-Error Deserializer::load(T& object)
+Error Deserializer::process(bool& value)
 {
-	return Error();
+	std::string text;
+	_stream >> text;
+	if (text == "true") 
+	{
+		value = true;
+	}
+	else if (text == "false") 
+	{
+		value = false;
+	}
+	else 
+	{
+		return Error::CorruptedArchive;
+	}
+
+	return Error::NoError;
+}
+
+Error Deserializer::process(uint64_t& value)
+{
+	try 
+	{
+		std::string text;
+		_stream >> text;
+		value = std::stoi(text);
+		return Error::NoError;
+	}
+	catch (...)
+	{
+		return Error::CorruptedArchive;
+	}
 }
