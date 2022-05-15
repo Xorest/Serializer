@@ -1,14 +1,16 @@
 #pragma once
 #include <iostream>
-#include <sstream>
+#include "ISerializer.h"
 #include "Data.h"
 
 using namespace std;
 
-class Serializer
+class Serializer : public ISerializer
 {
 public:
-	Serializer(stringstream stream);
+	Serializer(stringstream& stream);
 	void save(Data data);
+private:
+	ostream& _stream;
 };
 

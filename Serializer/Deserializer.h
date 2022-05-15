@@ -1,16 +1,13 @@
 #pragma once
-#include <iostream>
-#include <sstream>
+#include "ISerializer.h"
 #include "Data.h"
 
 using namespace std;
 
-enum class Error { NoError };
-
-class Deserializer
+class Deserializer : public ISerializer
 {
 public:
-	Deserializer(stringstream stream);
+	Deserializer(stringstream& stream);
 	Error load(Data& data);
 };
 

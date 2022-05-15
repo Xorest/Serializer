@@ -1,6 +1,7 @@
 #include "Serializer.h"
 
-Serializer::Serializer(stringstream stream)
+Serializer::Serializer(stringstream& stream)
+	: ISerializer(stream)
 {
 }
 
