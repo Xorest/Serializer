@@ -1,6 +1,7 @@
 #pragma once
 //it is very big class!!!
 #include <iostream>
+#include "ISerializer.h"
 
 class Data
 {
@@ -10,7 +11,11 @@ public:
     bool B() const;
     uint64_t C() const;
     template <class Serializer>
-    int serializer(Serializer& serializer);
+    Error serialize(Serializer& serializer) 
+    {
+        return serializer(_a, _b, _c);
+    }
+
 private:
     uint64_t _a;
     bool _b;

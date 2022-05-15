@@ -1,13 +1,11 @@
 #pragma once
 #include "ISerializer.h"
-#include "Data.h"
 
-using namespace std;
-
-class Deserializer : public ISerializer
+class Deserializer : public virtual ISerializer
 {
 public:
-	Deserializer(stringstream& stream);
-	Error load(Data& data);
+	explicit Deserializer(std::stringstream& stream);
+	template<class T>
+	Error load(T& object);
 };
 

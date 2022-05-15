@@ -1,11 +1,12 @@
 #include "Deserializer.h"
 
-Deserializer::Deserializer(stringstream& stream)
+Deserializer::Deserializer(std::stringstream& stream)
 	: ISerializer(stream)
 {
 }
 
-Error Deserializer::load(Data& data)
+template<class T>
+Error Deserializer::load(T& object)
 {
-	return Error::NoError;
+	return Error();
 }
