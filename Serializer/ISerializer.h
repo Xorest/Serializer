@@ -7,6 +7,7 @@ class ISerializer
 {
 public:
 	ISerializer(std::stringstream& stream) : _stream(stream) {}
-private:
+protected:
+	static constexpr char separator = ' ';
 	std::stringstream& _stream;
 };

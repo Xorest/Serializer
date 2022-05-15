@@ -24,9 +24,6 @@
     <ClCompile Include="Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Deseriallazer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Deserializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
