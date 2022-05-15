@@ -9,8 +9,6 @@ class Serializer : public ISerializer
 {
 public:
 	Serializer(stringstream& stream);
-	void save(Data data);
-private:
-	ostream& _stream;
+	Error save(const Data& data);
 };
 

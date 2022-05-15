@@ -5,7 +5,8 @@ Serializer::Serializer(stringstream& stream)
 {
 }
 
-void Serializer::save(Data data)
+Error Serializer::save(const Data& data)
 {
-
+	return Error::NoError;
 }
+
