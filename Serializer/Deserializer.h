@@ -19,12 +19,12 @@ private:
 	Error process(bool& value);
 	Error process(uint64_t& value);
 	template <class T>
-	Error process(T& value)
+	Error process(T&& value)
 	{
 		return Error::CorruptedArchive;
 	}
 	template <class T, class... ArgsT>
-	Error process(T& value, ArgsT&... args)
+	Error process(T&& value, ArgsT&&... args)
 	{
 		try
 		{
